@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>NourOthman — Portfolio</title>
+<meta name="description" content="NourOthman — Mobile Developer" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#0b0f17; --card:#0f1724; --muted:#98a1b3;
+--accent:#7c5cff; --accent2:#00d4ff;
+--glass: rgba(255,255,255,0.03);
+--radius:14px; --g:18px;
+--maxw:1100px; --ff:Inter,system-ui,-apple-system,'Segoe UI',Roboto;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0; font-family:var(--ff); background:radial-gradient(1200px 400px at 10% 10%, rgba(124,92,255,0.08), transparent),
+linear-gradient(180deg,#06070a 0%, var(--bg) 100%);
+color:#eaf0fb; display:flex; align-items:flex-start; justify-content:center; padding:40px 18px;
+}
+.wrap{width:100%; max-width:var(--maxw)}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;gap:12px}
+.mark{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:800}
+nav{display:flex;gap:12px}
+nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;transition:all .22s}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.03);transform:translateY(-3px)}
+.hero{display:grid;grid-template-columns:1fr 380px;gap:var(--g);align-items:start}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:26px; box-shadow:0 12px 40px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03)}
+h1,h2,h3,h4{margin:0}
+.intro h1{font-size:34px;line-height:1; margin-bottom:8px; font-weight:800}
+.intro p.lead{color:var(--muted);margin-top:8px}
+.typing{color:var(--accent);display:inline-block}
+.cta{margin-top:18px;display:flex;gap:10px}
+.btn{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--accent),#a790ff);color:#061024;border:none;cursor:pointer;font-weight:700}
+.btn.alt{background:transparent;border:1px solid rgba(255,255,255,0.04); color:var(--muted)}
+.profile{display:flex;flex-direction:column;gap:12px}
+.avatar{height:300px;width: 300px;border-radius:16px;background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); display:grid;margin-left: 4%;font-size:48px;}
+.stats{display:flex;gap:12px}
+.stat{flex:1;padding:10px;border-radius:10px;background:var(--glass); text-align:center}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--g);margin-top:18px}
+.project{position:relative;overflow:hidden;border-radius:12px;padding:18px;min-height:180px;transition:transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .3s;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.03)}
+.project:hover{transform:translateY(-10px) scale(1.01); box-shadow:0 30px 80px rgba(12,10,30,0.6)}
+.project .img{position:absolute;right:12px;bottom:12px;width:120px;height:80px;border-radius:10px;background:linear-gradient(135deg,var(--accent2),var(--accent));transform:rotate(6deg);box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+.skills{display:flex;gap:12px;flex-wrap:wrap}
+.skill{flex:0 0 120px;height:120px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));display:grid;place-items:center;text-align:center}
+footer{margin-top:30px;margin-bottom: 30px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+.reveal{opacity:0;transform:translateY(18px) scale(.99);transition:all .6s cubic-bezier(.2,.9,.3,1)}
+.reveal.show{opacity:1;transform:translateY(0) scale(1)}
+.floating{position:fixed;right:20px;bottom:20px;background:linear-gradient(90deg,var(--accent),var(--accent2));padding:12px;border-radius:12px;box-shadow:0 10px 40px rgba(122,81,255,0.18);cursor:pointer}
+.glow{position:relative;overflow:hidden}
+.glow:after{content:'';position:absolute;left:-40%;top:-30%;width:160%;height:160%;background:radial-gradient(circle at 30% 20%, rgba(124,92,255,0.18), transparent 8%, transparent 30%),
+radial-gradient(circle at 80% 80%, rgba(0,212,255,0.08), transparent 10%, transparent 30%);pointer-events:none;mix-blend-mode:screen;transition:transform 6s linear;transform:translate3d(0,0,0)}
+.glow:hover:after{transform:translateY(-6px) rotate(6deg)}
+.project .border-anim{position:absolute;inset:0;border-radius:12px;pointer-events:none;background:linear-gradient(90deg, transparent, rgba(124,92,255,0.08), transparent);opacity:0;transition:opacity .3s}
+.project:hover .border-anim{opacity:1}
+.contact-form{display:grid;gap:10px}
+.contact-form input,.contact-form textarea{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:12px;border-radius:10px;color:inherit}
+.contact-form textarea{min-height:120px}
+.dot{height:8px;width:8px;border-radius:50%;display:inline-block;margin-right:6px;background:var(--muted);opacity:.9}
+@media (max-width:940px){ .hero{grid-template-columns:1fr} .avatar{height:140px} }
+.btn:active{transform:translateY(1px)}
+.socials a{color:var(--muted);text-decoration:none;margin-left:.6rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div style="display:flex;align-items:center;gap:12px">
+<div class="mark">NO</div>
+<div>
+<div style="font-weight:700">NourOthman</div>
+<div style="font-size:12px;color:var(--muted)">Mobile Development</div>
+</div>
+</div>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<div class="card intro reveal glow">
+<h1>Hello — I'm <span style="background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;color:transparent;font-weight:900">Nour Othman</span></h1>
+<div class="lead">I build modern Mobile Application interfaces with polished animations and strong performance.</div>
+<div style="margin-top:12px">I'm <span class="typing" id="typing"></span></div>
+<div class="cta">
+<button class="btn" id="downloadBtn">Download CV</button>
+<button class="btn alt" id="projectsBtn">View Projects</button>
+</div>
+<div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+<div class="dot" style="background:var(--accent)"></div>
+<div style="color:var(--muted)">Available for freelance</div>
+</div>
+</div>
+
+<aside class="card profile reveal">
+<img class="avatar" src="WhatsApp Image 2025-11-12 at 16.51.39.jpeg">
+<div><b>Nour Othman</b><div style="color:var(--muted);font-size:13px">Mobile Developer — Morocco</div></div>
+<div class="stats">
+<div class="stat"><b>3  +</b><small style="color:var(--muted)">Projects</small></div>
+<div class="stat"><b>2</b><small style="color:var(--muted)">Years</small></div>
+
+</div>
+<div style="display:flex;gap:8px;margin-top:8px">
+
+<button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</button>
+</div>
+</aside>
+</section>
+
+<section id="about" class="card reveal" style="margin-top:18px">
+<h3>About me</h3>
+<p class="lead" style="margin-top:8px">I focus on accessible, high-performance work. I love subtle motion, neon lights and tight interactions.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+<div style="flex:1;min-width:220px">
+<h4>What I do</h4>
+<ul style="color:var(--muted);margin:0;padding-left:18px">
+<li>Mobile apps with Flutter / React Native</li>
+<li>Cross-platform development</li>
+<li>Performance and smooth animations on mobile</li>
+</ul>
+</div>
+<div style="flex:1;min-width:220px">
+<h4>Tech</h4>
+<div class="skills">
+<div class="skill"><b>HTML</b><small style="color:var(--muted)">Semantic</small></div>
+<div class="skill"><b>CSS</b><small style="color:var(--muted)">Grid / Anim</small></div>
+<div class="skill"><b>JS</b><small style="color:var(--muted)">ES6+</small></div>
+<div class="skill"><b>Kotlin</b><small style="color:var(--muted)">Mobile Dev</small></div>
+<div class="skill"><b>React Native</b><small style="color:var(--muted)">Cross Platform</small></div>
+<div class="skill"><b>Flutter</b><small style="color:var(--muted)">Cross Platform</small></div>
+<div class="skill"><b>Dart</b><small style="color:var(--muted)">Flutter Lang</small></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="projects" class="reveal" style="margin-top:18px">
+<h3>Selected projects</h3>
+<div class="projects-grid">
+<article class="project reveal glow">
+<div class="border-anim"></div>
+<h4>static website about Football</h4>
+<p style="color:var(--muted)">FIFA International Federation of Association Football <br> Fan Site.</p>
+<a style="color:var(--muted)" href="https://nour-up.github.io/Information-about-football/" target="_blank"> see more --></a>
+<div class="img" style="background-image:url('pr1.png');background-size:cover;background-position:center;"></div>
+</article>
+
+<article class="project reveal glow">
+<div class="border-anim"></div>
+<h4>Dashboard UI</h4>
+<p style="color:var(--muted)">Responsive dashboard with filters and lightweight charts.</p>
+<div class="img" style="background-image:url('project2.png');background-size:cover;background-position:center;"></div>
+</article>
+
+<article class="project reveal glow">
+<div class="border-anim"></div>
+<h4>Portfolio Template</h4>
+<p style="color:var(--muted)">Clean, modern, animated portfolio template.</p>
+<div class="img" style="background-image:url('project3.png');background-size:cover;background-position:center;"></div>
+</article>
+</div>
+</section>
+
+<section id="contact" class="card reveal" style="margin-top:18px">
+<h3>Contact</h3>
+<form id="contact-form" class="contact-form" onsubmit="event.preventDefault(); sendEmail()">
+<input name="from_name" id="name" placeholder="Your name" required />
+<input name="reply_to" id="email" type="email" placeholder="Email" required />
+<textarea name="message" id="message" placeholder="Message"></textarea>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="btn" type="submit">Send message</button>
+<button class="btn alt" type="button" onclick="document.getElementById('contact-form').reset()">Reset</button>
+</div>
+<div id="form-status" style="color:var(--muted);margin-top:8px;display:none"></div>
+</form>
+</section>
+
+<footer>
+<div>© <span id="year"></span> NourOthman</div>
+<div class="socials">
+    <a href="https://github.com/Nour-up" aria-label="github" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/ohtman-nour-47259232b/" aria-label="linkedin" target="_blank">LinkedIn</a>
+</div>
+</footer>
+</div>
+
+<div class="floating" id="topBtn" title="Back to top">↑</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('projectsBtn').addEventListener('click', ()=> document.getElementById('projects').scrollIntoView({behavior:'smooth'}));
+document.getElementById('topBtn').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+const words = ['Mobile Programmer','Animation lover','UI craftsman','Always learning'];
+const el = document.getElementById('typing');
+let wi=0, ci=0, forward=true;
+function type(){
+const word = words[wi];
+el.textContent = word.slice(0,ci);
+if(forward){ ci++; if(ci>word.length){ forward=false; setTimeout(type,900); return } }
+else{ ci--; if(ci<0){ forward=true; wi=(wi+1)%words.length; ci=0 } }
+setTimeout(type,80);
+}
+type();
+
+const obs = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); }) },{threshold:.12});
+document.querySelectorAll('.reveal').forEach(n=>obs.observe(n));
+
+function toggleTheme(){
+const r = document.documentElement;
+if(r.style.getPropertyValue('--bg') === '#0b0f17' || !r.style.getPropertyValue('--bg')){
+r.style.setProperty('--bg','#f6f7fb'); r.style.setProperty('--muted','#374151'); document.body.style.color='#061427';
+} else {
+r.style.setProperty('--bg','#0b0f17'); r.style.setProperty('--muted','#98a1b3'); document.body.style.color='#eaf0fb';
+}}
+
+// EmailJS init
+emailjs.init('UHNupCYQYoC1MSUqO');
+
+function sendEmail(){
+const statusEl = document.getElementById('form-status');
+statusEl.style.display='block'; statusEl.style.color='var(--muted)'; statusEl.textContent='Sending...';
+emailjs.sendForm('service_q0fgcxv','template_s3s2bto', '#contact-form')
+.then(function(response) {
+statusEl.style.color='lightgreen';
+statusEl.textContent='Message sent. Thank you.';
+document.getElementById('contact-form').reset();
+}, function(error) {
+statusEl.style.color='salmon';
+statusEl.textContent='Send failed. Check EmailJS setup. Error: ' + (error.text||error);
+console.error('EmailJS error', error);
+});
+}
+
+// Download CV
+document.getElementById('downloadBtn').addEventListener('click', ()=>{
+const link = document.createElement('a');
+link.href = 'Nour Othman.pdf'; // replace with your CV file path
+link.download = 'NourOthman_CV.pdf';
+link.click();
+});
+
+// keyboard shortcut
+document.addEventListener('keydown', e=>{ if(e.key.toLowerCase()==='p') document.getElementById('projects').scrollIntoView({behavior:'smooth'}) });
+</script>
+</body>
+</html>
